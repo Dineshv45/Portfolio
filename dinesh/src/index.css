@@ -1,0 +1,927 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "spartan", "Open Sans", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #111111;
+  color: #fff;
+  height: 200vh;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #18181b;
+}
+
+@keyframes slow-move {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.02);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.bg-motion {
+  animation: slow-move 12s ease-in-out infinite;
+}
+
+/* Reset margins for all section headings */
+.skill-section h1,
+.projects-section .heading,
+.contact-section h1 {
+  margin-top: 10px !important;
+  margin-bottom: 25px !important;
+}
+
+#home,
+#skills,
+#projects,
+#contact {
+  scroll-margin-top: 80px;
+  position: relative;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(139, 130, 130, 0.4);
+  z-index: 9999; /* very high to be safe */
+  background-color: #111; /* give a solid/semi-transparent bg to prevent overlap showing through */
+}
+
+.navbar .logo img {
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 4px 10px rgba(237, 236, 236, 0.894);
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+/* Remove any color change on hover */
+.navbar ul li a {
+  color: white;
+  text-decoration: none; /* no underline by default */
+  position: relative; /* needed for pseudo-element */
+  transition: all 0.3s ease;
+}
+
+/* Add white underline on hover */
+.navbar ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px; /* adjust distance from text */
+  width: 0%;
+  height: 2px; /* thickness of underline */
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.navbar ul li a:hover::after {
+  width: 100%; /* underline expands on hover */
+}
+
+/* Add this to make anchor scroll consider the fixed navbar */
+#home,
+#skills,
+#projects,
+#contact {
+  scroll-margin-top: 40px;
+  position: relative;
+}
+
+.hero-section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Background animation remains smooth and subtle */
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Layout for content and logo */
+.hero-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+  gap: 10px;
+  width: 80%;
+  max-width: 1200px;
+}
+
+/* Left-aligned text */
+.hero-content {
+  text-align: left;
+  max-width: 600px;
+}
+
+.hero-content h1 {
+  padding-left: 50px;
+  font-size: 5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.hero-content p {
+  padding-left: 50px;
+  font-size: 1.5rem;
+  color: #64ffda;
+  margin-top: 10px;
+}
+
+.download-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  border-radius: 25px;
+  background-color: #64ffda;
+  color: #0a192f;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-left: 50px;
+}
+
+.download-btn:hover {
+  background-color: #0ae6c8;
+  transform: translateY(-2px);
+}
+
+/* Centered logo — larger and no background box */
+.hero-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-logo img {
+  width: 550px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+/* Typing effect */
+.typing-text {
+  color: #64ffda;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 5px;
+  width: 2px;
+  height: 1em;
+  background-color: #64ffda;
+  animation: blink 0.7s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+.scroll-btn {
+  position: absolute;
+  bottom: 56px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 15px;
+  background: linear-gradient(135deg, #00eaff, #3b82f6, #00ffc8);
+  color: #0a192f;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 8;
+}
+
+.scroll-btn:hover {
+  background-color: #0a192f;
+  color: #64ffda;
+  box-shadow: 0 0 25px rgba(100, 255, 218, 0.5);
+  transform: translate(-50%, -3px);
+}
+
+.scroll-btn a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.scroll-btn .scroll-icon {
+  font-size: 1.2rem;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+/* === Skill Section Improvements === */
+.skill-section {
+  background: radial-gradient(circle at top left, #0a192f 0%, #020c1b 100%);
+  padding: 40px 20px 80px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.skill-section h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #00eaff, #3b82f6, #00ffc8);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 4s ease infinite;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 40px;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+/* Each Skill Group */
+.skill-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  background: rgba(25, 25, 35, 0.5);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.skill-group:hover {
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+  transform: translateY(-5px);
+}
+
+.skill-group h2 {
+  font-size: 1.8rem;
+  color: #00f6ff;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+}
+
+/* Skills container layout */
+.skill-set {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+  max-width: 1200px;
+}
+
+/* Skill Items */
+.skill-group ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.skill-group ul li {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle at 30% 30%, #181820, #1f1f2a);
+  color: #d1d5db;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  box-shadow:
+    0 0 8px rgba(0, 255, 255, 0.1),
+    0 0 20px rgba(0, 255, 255, 0.05) inset;
+  cursor: pointer;
+  /* overflow removed to allow icons above */
+}
+
+.skill-group ul li:hover {
+  transform: translateY(-6px) scale(1.05);
+  background: radial-gradient(circle at 70% 30%, #1b1b2a, #26263a);
+  box-shadow:
+    0 0 20px rgba(0, 255, 255, 0.6),
+    0 0 40px rgba(0, 255, 200, 0.4);
+  color: #00ffe1;
+}
+
+/* === ICONS ON HOVER === */
+.skill-group ul li span {
+  position: relative;
+  z-index: 5; /* above circle background but below icon */
+  transition: opacity 0.3s ease;
+}
+
+/* Hide text on hover */
+.skill-group ul li:hover span {
+  opacity: 0;
+}
+
+.skill-group ul li::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 10; /* above text */
+}
+
+.skill-group ul li:hover::after {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.skill-group ul li:hover::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+/* Frontend icons */
+.frontend ul li:nth-child(1)::after {
+  background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg");
+}
+.frontend ul li:nth-child(2)::after {
+  background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg");
+}
+.frontend ul li:nth-child(3)::after {
+  background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg");
+}
+.frontend ul li:nth-child(4)::after {
+  background-image: url("https://img.icons8.com/plasticine/100/tailwind_css.png");
+}
+.frontend ul li:nth-child(5)::after {
+  background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg");
+}
+
+/* Backend & Database icons */
+.backend ul li:nth-child(1)::after {
+  background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg");
+}
+.backend ul li:nth-child(2)::after {
+  background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg");
+}
+.backend ul li:nth-child(3)::after {
+  background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg");
+}
+.backend ul li:nth-child(4)::after {
+  background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg");
+}
+.backend ul li:nth-child(5)::after {
+  background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg");
+}
+
+/* Others icons */
+.others ul li:nth-child(1)::after {
+  background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg");
+}
+.others ul li:nth-child(2)::after {
+  background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg");
+}
+.others ul li:nth-child(3)::after {
+  background-image: url("https://img.icons8.com/external-solidglyph-m-oki-orlando/32/external-data-structures-data-science-solid-solidglyph-m-oki-orlando.png"); /* example DSA icon */
+}
+.others ul li:nth-child(4)::after {
+  background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg");
+}
+
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ------------ PROJECT SECTION ------------ */
+.projects-section {
+  padding: 40px;
+  background: radial-gradient(circle at top left, #0a192f 0%, #020c1b 100%);
+  color: white;
+  text-align: center;
+  padding: 40px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.heading {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #00eaff, #3b82f6, #00ffc8);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 4s ease infinite;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+/* ------------ SCROLLABLE CONTAINER ------------ */
+.projects-container {
+  height: 70vh;
+  width: 80%;
+  margin: 0 auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  border-radius: 20px;
+  background: rgba(17, 34, 64, 0.75);
+  box-shadow: 0 0 25px rgba(100, 255, 218, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  position: relative;
+}
+
+/* Hide scrollbar */
+.projects-container::-webkit-scrollbar {
+  width: 0;
+}
+.projects-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ------------ INDIVIDUAL PROJECT CARD ------------ */
+.project-card-inner {
+ min-height: 70vh; /* reduced from 90vh */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+  opacity: 0.9;
+  padding: 15px; /* slightly reduced padding */
+}
+
+.project-card-inner:hover {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+/* ------------ CARD CONTENT ------------ */
+
+.project-card-content {
+   display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px; /* reduced gap from 40px */
+  padding: 20px; /* reduced padding from 30px */
+  background: rgba(17, 34, 64, 0.85);
+  border-radius: 20px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease;
+}
+
+/* ---- LEFT TEXT SECTION ---- */
+.project-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* spacing between text and button */
+}
+
+.project-text h2 {
+  color: #64ffda;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.project-text .tech {
+  color: #8892b0;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.project-text ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  color: #ccd6f6;
+  line-height: 1.6;
+}
+
+.project-video {
+   width: 100%;
+  height: 200px; /* reduced from 250px */
+  overflow: visible;
+  padding: 8px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+
+.project-video video.video-preview {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 10px;
+}
+/* Optional hover effect */
+.project-video:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 40px rgba(100, 255, 218, 0.3);
+}
+
+/* ---- BUTTON ---- */
+.visit-btn {
+  align-self: start; /* aligns left in flex column */
+  margin-top: 15px;
+  background: white;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.visit-btn:hover {
+  background: #64ffda;
+  color: #0a192f;
+  transform: translateY(-2px);
+}
+
+/* ------------ RESPONSIVE ------------ */
+@media (max-width: 900px) {
+  .project-card-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 30px;
+  }
+}
+@media (max-width: 900px) {
+  .project-card-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 30px;
+  }
+
+  .project-text {
+    text-align: center;
+  }
+
+  .project-video {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
+/* --- CONTACT SECTION --- */
+.contact-section {
+  padding: 40px 0;
+  background: #0a192f;
+  color: #ccd6f6;
+}
+
+.contact-section h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #00eaff, #3b82f6, #00ffc8);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 4s ease infinite;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 40px;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+.section-heading {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 60px; /* spacing below heading */
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  max-width: 1100px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+/* LEFT SIDE */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.contact-card {
+  background: rgba(17, 34, 64, 0.85);
+  padding: 25px 35px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  width: 280px;
+  text-align: center;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(100, 255, 218, 0.25);
+}
+
+.contact-card .icon {
+  font-size: 2rem;
+  color: #64ffda;
+  margin-bottom: 10px;
+}
+
+.contact-card h3 {
+  margin-bottom: 10px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.contact-card .value a,
+.contact-card .value {
+  color: #ccd6f6;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.contact-card .action {
+  display: inline-block;
+  margin-top: 10px;
+  color: #64ffda;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.contact-card .action:hover {
+  text-decoration: underline;
+}
+
+/* RIGHT SIDE FORM */
+.contact-form {
+  flex: 1;
+  min-width: 320px;
+  max-width: 450px;
+  background: rgba(17, 34, 64, 0.85);
+  padding: 40px 50px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.contact-form:hover {
+  box-shadow: 0 10px 30px rgba(100, 255, 218, 0.25);
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.input-box {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+/* Normal full input box */
+.input-box input {
+  width: 100%;
+  background: transparent;
+  border: 2px solid #64ffda;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1rem;
+  color: #fff;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Create a gap in the top border for the label */
+.input-box label {
+  position: absolute;
+  top: -10px; /* pull it into the border line */
+  left: 20px; /* place inside top-left corner */
+  background: #0a192f; /* same as your form background color */
+  color: #64ffda;
+  font-size: 0.9rem;
+  font-family: monospace;
+  padding: 0 6px; /* creates the “cutout” effect */
+  pointer-events: none;
+}
+.input-box.textarea-box textarea {
+  display: block; /* ensures it’s a block element */
+  width: 100%;
+  background: transparent;
+  border: 2px solid #64ffda;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1rem;
+  color: #fff;
+  outline: none;
+  resize: vertical;
+  min-height: 120px;
+  transition: border-color 0.3s ease;
+}
+
+.input-box.textarea-box textarea:focus {
+  border-color: #a8ffe0;
+}
+
+/* Optional: glow or highlight on focus */
+.input-box input:focus {
+  border-color: #a8ffe0;
+}
+
+.input-box input:focus + label {
+  color: #a8ffe0;
+}
+
+/* Send Button (unchanged) */
+.send-btn {
+  padding: 12px 20px;
+  border: 2px solid #64ffda;
+  background: transparent;
+  color: #64ffda;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.send-btn:hover {
+  background: #64ffda;
+  color: #0a192f;
+}
+
+@media (max-width: 900px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .contact-form,
+  .contact-info {
+    max-width: 100%;
+  }
+}
+
+.footer-section {
+  background: #0a192f;
+  color: #ccd6f6;
+  text-align: center;
+  padding: 50px 0 30px;
+  border-top: 1px solid rgba(100, 255, 218, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.social-icons ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  margin: 0;
+  padding: 0;
+}
+
+.social-icons ul li a {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  position: relative;
+  transition: all 0.4s ease;
+  filter: grayscale(100%) brightness(0.85);
+  animation: float 3s ease-in-out infinite;
+  background-size: 65%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.social-icons ul li a:hover {
+  background-color: #ffffff;
+  transform: translateY(-8px) scale(1.25) rotate(-5deg);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
+  filter: none;
+  animation: none;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Individual social icon backgrounds */
+.social-link.instagram { background-image: url("https://cdn-icons-png.flaticon.com/512/174/174855.png"); }
+.social-link.linkedin { background-image: url("https://cdn-icons-png.flaticon.com/512/174/174857.png"); }
+.social-link.github { background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"); }
+.social-link.leetcode { background-image: url("https://leetcode.com/static/images/LeetCode_logo_rvs.png"); }
+
+/* Footer text */
+.footer-text {
+  font-size: 1rem;
+  color: #8892b0;
+  margin-top: 25px;
+  transition: color 0.3s ease;
+}
+
+.footer-text span {
+  color: #ffffff;
+  font-weight: 600;
+  animation: textGlow 4s ease-in-out infinite;
+}
+
+/* Text glow animation */
+@keyframes textGlow {
+  0%, 100% { color: #ffffff; text-shadow: 0 0 5px #64ffda; }
+  50% { color: #64ffda; text-shadow: 0 0 15px #64ffda; }
+}
