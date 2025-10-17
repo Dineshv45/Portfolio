@@ -5,6 +5,17 @@ function Projects() {
   const containerRef = useRef(null);
 
   const projects = [
+     {
+    title: "NoteStack (Collaborative Note-Taking Platform)",
+    tech: "Next.js, Supabase, Tailwind CSS",
+    description: [
+      "Developed a real-time note-taking and collaboration platform that allows users to create, edit, share, and manage notes securely.",
+      "Implemented authentication, Markdown editor, and real-time synchronization using Supabase.",
+      "Designed a responsive and interactive interface for seamless note sharing, importing/exporting, and multi-user collaboration.",
+    ],
+    video: "/videos/NoteStack.mp4", 
+    link: "https://note-stack-eight.vercel.app/", 
+  },
     {
       title: "Code Reviewer (AI-Powered Code Analysis Tool)",
       tech: "React.js, Node.js, Express.js, Google Gemini API",
@@ -63,11 +74,14 @@ function Projects() {
               <div className="project-text">
                 <h2>{project.title}</h2>
                 <p className="tech">Tech Stack: {project.tech}</p>
-                <ul>
-                  {project.description.map((desc, i) => (
-                    <li key={i}>{desc}</li>
-                  ))}
-                </ul>
+                <div className="project-text flex flex-col items-center md:items-start">
+  <ul className="list-disc list-inside space-y-2 text-center md:text-left">
+    {project.description.map((desc, i) => (
+      <li key={i}>{desc}</li>
+    ))}
+  </ul>
+</div>
+
                 <a
                   href={project.link}
                   target="_blank"

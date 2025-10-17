@@ -10,6 +10,7 @@ function Skills() {
         <div className="skill-group frontend">
           <h2>Frontend</h2>
           <ul>
+            <li><span>Next.js</span></li>
             <li><span>React</span></li>
             <li><span>JavaScript</span></li>
             <li><span>CSS</span></li>
@@ -27,6 +28,7 @@ function Skills() {
             <li><span>Django</span></li>
             <li><span>MySQL</span></li>
             <li><span>MongoDB</span></li>
+             <li><span>Supabase</span></li>
           </ul>
         </div>
 

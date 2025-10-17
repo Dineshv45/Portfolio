@@ -472,20 +472,24 @@ body {
 
 /* Frontend icons */
 .frontend ul li:nth-child(1)::after {
-  background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg");
+  background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg");
 }
 .frontend ul li:nth-child(2)::after {
-  background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg");
+  background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg");
 }
 .frontend ul li:nth-child(3)::after {
-  background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg");
+  background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg");
 }
 .frontend ul li:nth-child(4)::after {
-  background-image: url("https://img.icons8.com/plasticine/100/tailwind_css.png");
+  background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg");
 }
 .frontend ul li:nth-child(5)::after {
+  background-image: url("https://img.icons8.com/plasticine/100/tailwind_css.png");
+}
+.frontend ul li:nth-child(6)::after {
   background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg");
 }
+
 
 /* Backend & Database icons */
 .backend ul li:nth-child(1)::after {
@@ -502,6 +506,9 @@ body {
 }
 .backend ul li:nth-child(5)::after {
   background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg");
+}
+.backend ul li:nth-child(6)::after {
+  background-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg");
 }
 
 /* Others icons */
