@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 
 export default function HeroSection() {
-  const roles = ["Full Stack Developer", "Front End Developer", "Software Engineer"];
+  const roles = ["Full Stack Developer", "Front End Developer", "Software Developer"];
   const [text, setText] = useState("");
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
