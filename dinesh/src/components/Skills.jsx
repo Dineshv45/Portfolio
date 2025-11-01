@@ -25,7 +25,6 @@ function Skills() {
           <ul>
             <li><span>Node</span></li>
             <li><span>Express</span></li>
-            <li><span>Django</span></li>
             <li><span>MySQL</span></li>
             <li><span>MongoDB</span></li>
              <li><span>Supabase</span></li>
