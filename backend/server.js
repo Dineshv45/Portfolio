@@ -39,4 +39,9 @@ app.post('/send-contact-email', (req, res) => {
   });
 });
 
+app.get('/', (req, res) => {
+  res.send('✅ Contact form backend is running.');
+});
+
+
 app.listen(port, () => console.log(`Server running on port ${port}`));
